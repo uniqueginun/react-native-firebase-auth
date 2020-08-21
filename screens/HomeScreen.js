@@ -1,18 +1,28 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { AuthContext } from "../contexts/AuthContext";
-import { Button } from "native-base";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ProfileScreen from "./ProfileScreen";
+import SettingScreen from "./SettingScreen";
+
+const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
-  const { signOut } = React.useContext(AuthContext);
-
   return (
-    <View>
-      <Text>Signed in!, Welcome to your account</Text>
-      <Button title="Sign out" color="secondary" onPress={signOut}>
-        <Text>Sign Out</Text>
-      </Button>
-    </View>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: "#e91e63",
+        tabStyle: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        },
+        labelStyle: {
+          fontSize: 16,
+        },
+      }}
+    >
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Settings" component={SettingScreen} />
+    </Tab.Navigator>
   );
 }
 

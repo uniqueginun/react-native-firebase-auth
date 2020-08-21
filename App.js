@@ -33,7 +33,13 @@ export default function App() {
     <AuthContextProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen
+            name="Main"
+            options={{
+              headerShown: false,
+            }}
+            component={MainScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContextProvider>
